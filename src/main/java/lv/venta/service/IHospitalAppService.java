@@ -26,7 +26,7 @@ public interface IHospitalAppService {
 	public abstract ArrayList<Patient> selectAllPatFromCity(City city) throws Exception;
 	
 	// sleetAllMedAppForDoctorsToday
-	public abstract ArrayList<MedicalAppointment> selectAllMedAppForDoctorToday(int did, LocalDateTime dateTime) throws Exception;
+	public abstract ArrayList<MedicalAppointment> selectAllMedAppForDoctorToday(String personCode) throws Exception;
 	
 	// changeDocForAppointment
 	public abstract void changeDoctorForApp(int mdid, int did) throws Exception;
@@ -36,6 +36,7 @@ public interface IHospitalAppService {
 	
 	// insertNewPatDisHistoryForPat
 	public abstract void insertNewPatDisHistoryForPat(Disease disease, LocalDate diseaseStart, boolean isPresent, Patient patient, int severity, String notes) throws Exception;
+
 	
 	
 }

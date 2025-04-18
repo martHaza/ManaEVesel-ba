@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import lv.venta.enums.City;
 import lv.venta.enums.Disease;
 import lv.venta.enums.DoctorType;
+import lv.venta.model.Doctor;
 import lv.venta.model.MedicalAppointment;
 import lv.venta.model.Patient;
 import lv.venta.model.PatientDiseaseH;
+import lv.venta.repo.IDoctorRepo;
 import lv.venta.repo.IMedAppRepo;
 import lv.venta.repo.IPatientDiseaseHRepo;
 import lv.venta.repo.IPatientRepo;
@@ -27,6 +29,9 @@ public class IHospitalAppServiceImpl implements IHospitalAppService {
 	
 	@Autowired
 	private IPatientRepo patientRepo;
+	
+	@Autowired
+	private IDoctorRepo doctorRepo;
 	
 	
 	@Override
@@ -84,7 +89,18 @@ public class IHospitalAppServiceImpl implements IHospitalAppService {
 
 	@Override
 	public ArrayList<MedicalAppointment> selectAllMedAppForDoctorToday(String personCode) throws Exception {
-		LocalDate today = LocalDate.now();
+		// LocalDate today = LocalDate.now();
+		
+		if(personCode == null) {
+			throw new Exception("Personas kods nedrīkst būt nulle!");
+		}
+		
+		Doctor doctor = doctorRepo.findByPersonCode(personCode);
+		if(doctor == null) {
+			throw new Exception("Dakteris nevar būt nulle!");
+		}
+		
+		return medAppRepo.findByDoctorToday(doctor);
 		
 	}
 
