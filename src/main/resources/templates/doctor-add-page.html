@@ -1,0 +1,34 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<body>
+		<p>Pievieno dakteri:</p>
+		<form th:action = "@{/doctor/crud/add}" method="post" th:object="${doctor}">
+			<table>
+				<tr>
+					<td>DoctorType</td>
+					<td><input type="text" th:field="*{doctorType}"	/></td>
+				</tr>
+				<tr>
+					<td>ExperienceInYears</td>
+					<td><input type="text" th:field="*{ExperienceInYears}"	/></td>
+				</tr>
+				<tr>
+					<td>CertificateNr</td>
+					<td><input type="text" th:field="*{CertificateNr}"	/></td>
+				</tr>
+				<tr>
+					<td>Name</td>
+					<td><input type="text" th:field="*{name}"	/></td>
+				</tr>
+				<tr>
+					<td>PersonCode</td>
+					<td><input type="text" th:field="*{personCode}"	/></td>
+				</tr>
+				<tr>
+					<td>Surname</td>
+					<td><input type="text" th:field="*{surname}"	/></td>				
+				</tr>
+			</table>
+			<button type="submit">Saglabāt</button>
+		</form>
+	</body>
+</html>

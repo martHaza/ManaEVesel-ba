@@ -35,7 +35,6 @@ public class MedicalAppointment {
 	
 	@ManyToOne
 	@JoinColumn(name = "DId")
-	@NotNull
 	private Doctor doctor;
 	
 	@JoinColumn(name = "PId")

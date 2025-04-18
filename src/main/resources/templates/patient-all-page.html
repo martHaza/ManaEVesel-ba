@@ -1,0 +1,24 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	
+
+<body>
+	
+	<p>Visi pacienti: </p>
+	
+	<table th:each = "temp : ${package}">
+		<tr>
+			<td th:text="${temp.getName()}" ></td>
+			<td th:text="${temp.getPatientCode()}" ></td>
+			<td th:text="${temp.getPersonCode()}" ></td>
+			<td th:text="${temp.getPhoneNr()}" ></td>
+			<td th:text="${temp.getsurname()}" ></td>
+			<td th:text="${temp.getAddress()}" ></td>
+			
+		</tr>
+		
+		
+	</table>
+	
+	
+</body>
+</html>
