@@ -1,13 +1,17 @@
 package lv.venta.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
@@ -35,11 +39,18 @@ public class PatientDiseaseH {
 	@Column(name = "PDHId")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Setter(value = AccessLevel.NONE)
-	@ManyToMany(mappedBy = "mid")
 	private int pdhid;
 	
+	@ManyToMany
+	@JoinTable(
+	    name = "PatientDiseaseHistory_Medicine",
+	    joinColumns = @JoinColumn(name = "pdhid"),
+	    inverseJoinColumns = @JoinColumn(name = "mid")
+	)
+	private ArrayList<Medicine> medicines;
+	
 	@Column(name = "Disease")
-	@ManyToOne
+	@Enumerated(EnumType.STRING)
 	@NotNull
     private Disease disease;
 	

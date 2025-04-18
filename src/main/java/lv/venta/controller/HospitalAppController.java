@@ -15,8 +15,8 @@ import lv.venta.service.IHospitalAppService;
 @RequestMapping("/hospital")
 public class HospitalAppController {
 
-	@Autowired
-	private IHospitalAppService hospitalService;
+//	@Autowired
+//	private IHospitalAppService hospitalService;
 	
 	// i. get medicalAppointmentByPersonCode
 	/*

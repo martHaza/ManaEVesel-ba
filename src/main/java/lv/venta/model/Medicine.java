@@ -1,6 +1,7 @@
 package lv.venta.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -38,8 +39,10 @@ public class Medicine {
 	@Id
 	@Column(name = "MId")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@ManyToMany(mappedBy = "pdhid")
 	private int mid;
+	
+	@ManyToMany(mappedBy = "medicines")
+	private ArrayList<PatientDiseaseH> patientDiseaseHistories;
 	
 	@Column(name = "Dosage")
 	private String dosage;
