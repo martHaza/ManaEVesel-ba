@@ -9,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import lv.venta.enums.City;
 import lv.venta.enums.Disease;
 import lv.venta.enums.DoctorType;
+import lv.venta.model.Address;
 import lv.venta.model.Doctor;
 import lv.venta.model.MedicalAppointment;
 import lv.venta.model.Patient;
 import lv.venta.model.PatientDiseaseH;
+import lv.venta.repo.IAddressRepo;
 import lv.venta.repo.IDoctorRepo;
 import lv.venta.repo.IMedAppRepo;
 import lv.venta.repo.IPatientDiseaseHRepo;
@@ -33,6 +35,9 @@ public class IHospitalAppServiceImpl implements IHospitalAppService {
 	@Autowired
 	private IDoctorRepo doctorRepo;
 	
+	@Autowired
+	private IAddressRepo addressRepo;
+	
 	
 	@Override
 	public ArrayList<MedicalAppointment> selectAllMedAppByPatPersonCode(String personCode) throws Exception {
@@ -40,7 +45,9 @@ public class IHospitalAppServiceImpl implements IHospitalAppService {
 			throw new Exception("Personas kods nevar būt nulle!");
 		} 
 		
-		ArrayList<MedicalAppointment> result = medAppRepo.findByPersonCode(personCode);
+		Patient patient = patientRepo.findByPersonCode(personCode);
+		
+		ArrayList<MedicalAppointment> result = medAppRepo.findByPatient(patient);
 		if(result.isEmpty()) {
 			throw new Exception("Pacients ar tādu personas kodu nav!");
 		}
@@ -79,9 +86,12 @@ public class IHospitalAppServiceImpl implements IHospitalAppService {
 
 	@Override
 	public ArrayList<Patient> selectAllPatFromCity(City city) throws Exception {
-		ArrayList<Patient> result = patientRepo.findByCity(city);
+		Address address = addressRepo.findByCity(city);
+		ArrayList<Patient> result = patientRepo.findByAddress(address);
+		
 		if(result.isEmpty()) {
 			throw new Exception("No tādas pilsētas nav neviens pacients!");
+			
 		}
 		
 		return result;

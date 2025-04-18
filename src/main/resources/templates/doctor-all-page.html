@@ -1,0 +1,25 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	
+
+<body>
+	
+	<p>Visi dakteri: </p>
+	
+	<table th:each = "temp : ${package}">
+		<tr>
+			<td th:text="${temp.getDid()}" ></td>
+			<td th:text="${temp.getDoctorType()}" ></td>
+			<td th:text="${temp.getExperienceInYears()}" ></td>
+			<td th:text="${temp.getCertificateNr()}" ></td>
+			<td th:text="${temp.getName()}" ></td>
+			<td th:text="${temp.getPersonCode()}" ></td>
+			<td th:text="${temp.getSurname()}" ></td>
+			
+		</tr>
+		
+		
+	</table>
+	
+	
+</body>
+</html>

@@ -8,14 +8,17 @@ import org.springframework.data.repository.CrudRepository;
 
 import lv.venta.model.Doctor;
 import lv.venta.model.MedicalAppointment;
+import lv.venta.model.Patient;
 
 public interface IMedAppRepo extends CrudRepository<MedicalAppointment, Integer> {
 	
-	ArrayList<MedicalAppointment> findByPersonCode(String personCode);
+	// ArrayList<MedicalAppointment> findByPersonCode(String personCode);
 	
 	// ArrayList<MedicalAppointment> findAllMedAppToday(Doctor doctor, LocalDateTime dateTime);
 	
 	// ArrayList<MedicalAppointment> findAllByDoctor(Doctor doctor);
+	
+	ArrayList<MedicalAppointment> findByPatient(Patient patient);
 	
 	@Query(nativeQuery = true, value="SELECT * FROM medical_appointment where doctor = (?1 ) AND date(date_time) = curdate();")
 	ArrayList<MedicalAppointment> findByDoctorToday(Doctor doctor);

@@ -1,0 +1,21 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	
+
+<body>
+	
+	<p>Viens dakteris: </p>
+		<table>
+		<tr>
+			<td th:text="${package.getDid()}" ></td>
+			<td th:text="${package.getDoctorType()}" ></td>
+			<td th:text="${package.getExperienceInYears()}" ></td>
+			<td th:text="${package.getCertificateNr()}" ></td>
+			<td th:text="${package.getName()}" ></td>
+			<td th:text="${package.getPersonCode()}" ></td>
+			<td th:text="${package.getSurname()}" ></td>
+			
+		</tr>
+		</table>
+	
+</body>
+</html>

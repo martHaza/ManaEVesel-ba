@@ -55,8 +55,7 @@ public class Address {
 	
 	@Column(name="StreetOrHouseTitle")
 	@NotNull
-	@Min(4)
-	@Max(50)
+	@Size(min= 4, max = 50)
 	@Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀČŅa-zēūīļķģšāžčņ ]+")
 	private String streetOrHouseTitle;
 	

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import lv.venta.model.Doctor;
 import lv.venta.model.MedicalAppointment;
@@ -11,6 +12,7 @@ import lv.venta.repo.IDoctorRepo;
 import lv.venta.repo.IMedAppRepo;
 import lv.venta.service.IDoctorCRUDService;
 
+@Service
 public class IDoctorCRUDServiceImpl implements IDoctorCRUDService {
 
 	@Autowired

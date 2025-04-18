@@ -50,17 +50,17 @@ public class Medicine {
 	@Column(name = "Manufacturer")
 	private String manufacturer;
 	
-	@Column(name = "Usage")
-    private String usage;
+	@Column(name = "Consumption")
+    private String consumption;
 	
 	@Column(name = "UsageInstructions")
     private String usageInstructions;
 	
-	public Medicine(LocalDate expiryDate, String dosage, String manufacturer, String usage, String usageInstructions) {
+	public Medicine(LocalDate expiryDate, String dosage, String manufacturer, String consumption, String usageInstructions) {
 		setExpiryDate(expiryDate);
 		setDosage(dosage);
 		setManufacturer(manufacturer);
-		setUsage(usage);
+		setConsumption(consumption);
 		setUsageInstructions(usageInstructions);
 	}
 	

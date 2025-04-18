@@ -16,6 +16,7 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -57,8 +58,7 @@ public class Patient {
 	
 	@Column(name = "PersonCode")
 	@NotNull
-	@Min(12)
-	@Max(12)
+	@Size(min = 12, max = 12)
 	@Pattern(regexp = "[0-9]{6}-[0-9]{5}")
 	private String personCode;
 	

@@ -76,7 +76,7 @@ public class ManaEVeselibaApplication {
 				
 				Patient p3 = new Patient();
 				p3.setName("Gatis");
-				p3.setPatientCode("D_O398345");
+				p3.setPatientCode("D_I398345-27654");
 				p3.setPersonCode("130599-27654");
 				p3.setPhoneNr("+371 26660891");
 				p3.setSurname("Kandis");
@@ -110,7 +110,7 @@ public class ManaEVeselibaApplication {
 				med1.setExpiryDate(LocalDate.now().withYear(2029).withMonth(9));
 				med1.setDosage("37,5mg");
 				med1.setManufacturer("Venlaxor");
-				med1.setUsage("Trauskmei");
+				med1.setConsumption("Trauskmei");
 				med1.setUsageInstructions("1 tablete diena");
 				medicineRepo.save(med1);
 				
@@ -118,7 +118,7 @@ public class ManaEVeselibaApplication {
 				med2.setExpiryDate(LocalDate.now().withYear(2025).withMonth(10));
 				med2.setDosage("100mg");
 				med2.setManufacturer("Cinie");
-				med2.setUsage("Migrenai");
+				med2.setConsumption("Migrenai");
 				med2.setUsageInstructions("1 tablete diena");
 				medicineRepo.save(med2);
 				
@@ -126,38 +126,45 @@ public class ManaEVeselibaApplication {
 				med3.setExpiryDate(LocalDate.now().withYear(2029).withMonth(6));
 				med3.setDosage("3mg");
 				med3.setManufacturer("YAZ");
-				med3.setUsage("Kontracepcija");
+				med3.setConsumption("Kontracepcija");
 				med3.setUsageInstructions("1 tablete diena");
 				medicineRepo.save(med3);
 				
 				// Patient disease history
-				PatientDiseaseH h1 = new PatientDiseaseH();
-				h1.setDisease(Disease.Gripa);
-				h1.setDiseaseStart(LocalDate.of(2024, 11, 7));
-				h1.setPresent(false);
-				h1.setPatient(p3);
-				h1.setSeverity(7);
-				h1.setNotes("Stipra gripa ar augstu temperaturu");
-				patDisHRepo.save(h1);
+//				PatientDiseaseH h1 = new PatientDiseaseH();
+//				h1.setDisease(Disease.Gripa);
+//				h1.setDiseaseStart(LocalDate.of(2024, 11, 7));
+//				h1.setPresent(false);
+//				h1.setPatient(p3);
+//				h1.setSeverity(7);
+//				h1.setNotes("Stipra gripa ar augstu temperaturu");
+//				patDisHRepo.save(h1);
+//				
+//				PatientDiseaseH h2 = new PatientDiseaseH();
+//				h2.setDisease(Disease.Migrēna);
+//				h2.setDiseaseStart(LocalDate.of(2019, 3, 16));
+//				h2.setPresent(true);
+//				h1.setPatient(p1);
+//				h1.setSeverity(10);
+//				h1.setNotes("Stipras galvassapes, kermena tirpsana un redzes problemas");
+//				patDisHRepo.save(h2);
+//				
+//				PatientDiseaseH h3 = new PatientDiseaseH();
+//				h3.setDisease(Disease.Saaukstēšanās);
+//				h3.setDiseaseStart(LocalDate.of(2025, 4, 10));
+//				h3.setPresent(true);
+//				h3.setPatient(p2);
+//				h3.setSeverity(6);
+//				h3.setNotes("Augsta temperatura, iesnas un klepus");
+//				patDisHRepo.save(h3);
 				
-				PatientDiseaseH h2 = new PatientDiseaseH();
-				h2.setDisease(Disease.Migrēna);
-				h2.setDiseaseStart(LocalDate.of(2019, 3, 16));
-				h2.setPresent(true);
-				h1.setPatient(p1);
-				h1.setSeverity(10);
-				h1.setNotes("Stipras galvassapes, kermena tirpsana un redzes problemas");
-				patDisHRepo.save(h2);
-				
-				PatientDiseaseH h3 = new PatientDiseaseH();
-				h3.setDisease(Disease.Saaukstēšanās);
-				h3.setDiseaseStart(LocalDate.of(2025, 4, 10));
-				h3.setPresent(true);
-				h3.setPatient(p2);
-				h3.setSeverity(6);
-				h3.setNotes("Augsta temperatura, iesnas un klepus");
-				patDisHRepo.save(h3);
-				
+				PatientDiseaseH h1 = new PatientDiseaseH(Disease.Gripa, LocalDate.of(2024, 11, 7), false, p3, 7, "Stipra gripa ar augstu temperaturu");
+                patDisHRepo.save(h1);
+                PatientDiseaseH h2 = new PatientDiseaseH(Disease.Migrēna, LocalDate.of(2019, 3, 16), true, p1, 10, "Stipras galvassapes, kermena tirpsana un redzes problemas");
+                patDisHRepo.save(h2);
+                PatientDiseaseH h3 = new PatientDiseaseH(Disease.Saaukstēšanās, LocalDate.of(2025, 4, 10), true, p2, 6, "Augsta temperatura, iesnas un klepus");
+                patDisHRepo.save(h3);
+                
 			}
 			
 			
